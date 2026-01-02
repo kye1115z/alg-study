@@ -91,7 +91,7 @@ class Main {
                         iceCount++;
                         }
                 }
-                if (iceCount < 3) meltingMap[i][j]--;
+                if (iceCount < 3 && meltingMap[i][j] > 0) meltingMap[i][j]--;  
             }
         }
         return meltingMap;
@@ -122,7 +122,7 @@ class Main {
                             int nextY = currNode[1] + dy[k];
 
                             if(nextX >= 0
-                               && nextX > size
+                               && nextX < size
                                && nextY >= 0
                                && nextY < size
                                && !visited[nextX][nextY]
@@ -130,8 +130,7 @@ class Main {
                                 visited[nextX][nextY] = true;
                                 deque.addLast(new int[] {nextX, nextY});
                                }
-                        }
-                    //System.out.println(currentIceSize);                
+                        }                
                     }
                     maxIceSize = Math.max(maxIceSize, currentIceSize);
                 }
